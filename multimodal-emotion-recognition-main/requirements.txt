@@ -1,0 +1,6 @@
+torch==1.9.0
+torchvision==0.10.0
+librosa==0.8.1
+opencv-python
+tqdm
+numpy==1.22

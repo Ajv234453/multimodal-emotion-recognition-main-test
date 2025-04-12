@@ -1,0 +1,2 @@
+epoch	batch	iter	loss	prec1	prec5	lr
+3	1	211	0.6715995669364929	46.875	100.0	0.06
