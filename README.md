@@ -5,33 +5,48 @@
 
 
 
-## About
+## About This Project 🚗⚡
 
-This repository implements a multimodal network for emotion recognition from audio and video data following the paper "[Self-attention fusion for audiovisual emotion recognition with incomplete data]" accepted to ICPR 2022. We provide implementations for [Ravdess] dataset of speech and frontal face view data corresponding to 8 emotions: 01 = neutral, 02 = calm, 03 = happy, 04 = sad, 05 = angry, 06 = fearful, 07 = disgust, 08 = surprised. We provide implementations of three fusion variants ('late transformer', 'intermediate transformer', 'intermediate attention') and modality dropouts.
+**Tri-Modal Hazard Detection Framework for Advanced Driver Assistance Systems**
 
-<p align="center">
-<img src="emotionfigure.png" alt="drawing" width="80%"/>
+This project proposes a novel multimodal framework for real-time driving hazard detection by fusing three synchronized data streams: driver facial video, in-cabin audio, and forward-facing road video. Experimental results demonstrate **94.11% recognition accuracy** on our custom hybrid synthetic-real dataset, outperforming unimodal and bimodal baselines.
+![Tri-Modal Fusion Architecture](a1212.png)
+
+### Key Contributions
+
+- **Dynamic Multimodal Fusion Architecture**  
+  Intermediate attention-based fusion mechanism with cross-modal similarity matrices for feature alignment
+- **Lightweight Computational Modules**  
+  - **ARWS Convolution**: Enhanced depthwise separable convolution with residual connections and dynamic weight allocation
+  - **DyT Activation**: Parameter-efficient Dynamic Tanh layer replacing traditional normalization
+- **Hybrid Synthetic-Real Dataset**  
+  Synchronized tri-modal dataset combining AirSim simulations and real driving videos, annotated with hazardous events
+
+### Technical Features
+
+```python
+# Core fusion logic
+attention_weights = compute_cross_modal_attention(road_feats, face_feats, audio_feats)
+fused_features = weighted_fusion(attention_weights)
+<img src="a1212.png" alt="drawing" width="80%"/>
 </p>
 <p align = "center">
 Fusion blocks
 </p>
 
-
 ## Dependencies
-
 The code is tested with Python=3.9.5 and pytorch=1.9.0. To install required packages:
-
 ```
+
 pip install -r requirements.txt
-```
 
+```
 ## Usage
 
 #### Dataset preparation
-
 For training on Ravdess, download data from [here](https://zenodo.org/record/1188976#.YkgJVijP2bh). You will need to download the files Video_Speech_Actor_[01-24].zip and Audio_Speech_Actors_01-24.zip. The directory should be organized as follows:
-
 ```
+
 RAVDESS
 └───ACTOR01
 │   │  01-01-01-01-01-01-01.mp4
@@ -43,10 +58,9 @@ RAVDESS
 └───ACTOR02
 └───...
 └───ACTOR24
+
 ```
-
 Install face detection library:
-
 ```sh
 pip install facenet-pytorch
 ```
@@ -114,11 +128,7 @@ For training on a different dataset:
 If you use our work, please cite as:
 
 ```bibtex
-@article{chumachenko2022self,
-  title={Self-attention fusion for audiovisual emotion recognition with incomplete data},
-  author={Chumachenko, Kateryna and Iosifidis, Alexandros and Gabbouj, Moncef},
-  journal={arXiv preprint arXiv:2201.11095},
-  year={2022}
+@article{
 }
 ```
 
